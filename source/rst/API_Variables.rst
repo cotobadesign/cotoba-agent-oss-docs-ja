@@ -27,7 +27,7 @@
 利用例
 ----------------------------------------
 
-クライアントからの対話APIで下記のように、対話APIデータが与えられた場合、
+クライアントからの対話APIで以下のように、対話APIデータが与えられた場合、
 
 ..  code:: json
 
@@ -40,7 +40,7 @@
         "metadata": {"arg1": "value1", "arg2": "value2"}
     }
 
-シナリオでの扱い方は、下記のようになります。
+シナリオでの扱い方は、以下のようになります。
 
 .. code:: xml
 
@@ -56,7 +56,7 @@
         </category>
     </aiml>
 
-| Input: api variables
+| Input: こんにちは
 | Output: ja-JP,2018-07-01T12:18:45+09:00,E8BDF659B007ADA2C4841EA364E8A70308E03A71,こんにちは
 
-metadataについては、 :doc:`Metadata <Metadata>` を参照してください。
+metadataについては、 :doc:`metadata <Metadata>` を参照してください。

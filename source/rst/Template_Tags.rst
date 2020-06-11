@@ -1,18 +1,19 @@
 ==================================================
-template要素
+template要素内の子要素
 ==================================================
 
-本章ではtemplate要素内で記述可能なAIML要素について説明します。
+| 本章ではtemplate要素内で記述可能な子要素について説明します。
 
-対話プラットフォームでサポートしているtemplateの要素内に記述可能なAIML要素のリストは以下のとおりです。
+| 対話プラットフォームでサポートしているtemplateの要素内に記述可能な子要素のリストは以下のとおりです。
+| 公式の AIML 2.x仕様に対し、独自の要素セットを追加しています。
 
--  `addtriple <#addtriple>`__
--  `authorise <#authorise>`__
--  `bot <#bot>`__
--  `button <#button>`__
--  `card <#card>`__
--  `carousel <#carousel>`__
--  `condition <#condition>`__
+-  `addtriple <#addtriple>`__: RDFナレッジベースへのエレメント追加要素
+-  `authorise <#authorise>`__: ユーザロールによりAIML要素の実行の切り替え要素
+-  `bot <#bot>`__: bot固有のプロパティの取得要素
+-  `button <#button>`__: ボタン押下を促す要素
+-  `card <#card>`__: 画像、ボタン、タイトル、サブタイトルを1つにまとめる要素
+-  `carousel <#carousel>`__: カード要素をまとめる要素
+-  `condition <#condition>`__: 対話分岐条件記述要素
 
    -  :ref:`単一判定<condition_type1>`
 
@@ -22,67 +23,67 @@ template要素
 
    -  :ref:`ループ処理 <condition_looping>`
 
--  `date <#date>`__
--  `delay <#delay>`__
--  `deletetriple <#deletetriple>`__
--  `denormalize <#denormalize>`__
--  `eval <#eval>`__
--  `explode <#explode>`__
--  `first <#first>`__
--  `extension <#extension>`__
--  `formal <#formal>`__
--  `gender <#gender>`__
--  `get <#get>`__
--  `id <#id>`__
--  `image <#image>`__
--  `implode <#implode>`__
--  `input <#input>`__
--  `interval <#interval>`__
--  `json <#json>`__
--  `learn <#learn>`__
--  `learnf <#learnf>`__
--  `li <#li>`__
--  `link <#link>`__
--  `list <#list>`__
--  `log <#log>`__
--  `lowercase <#lowercase>`__
--  `map <#map>`__
--  `nluintent <#nluintent>`__
--  `nluslot <#nluslot>`__
--  `normalize <#normalize>`__
--  `oob <#oob>`__
--  `olist <#olist>`__
--  `person <#person>`__
--  `person2 <#person2>`__
--  `program <#program>`__
--  `random <#random>`__
--  `reply <#reply>`__
--  `request <#request>`__
--  `resetlearn <#resetlearn>`__
--  `resetlearnf <#resetlearnf>`__
--  `response <#response>`__
--  `rest <#rest>`__
--  `set <#set>`__
--  `select <#select>`__
--  `sentence <#sentence>`__
--  `size <#size>`__
--  `space <#space>`__
--  `split <#split>`__
--  `sr <#sr>`__
--  `srai <#srai>`__
--  `sraix <#sraix>`__
--  `star <#star>`__
--  `system <#system>`__
--  `that <#that>`__
--  `thatstar <#thatstar>`__
--  `think <#think>`__
--  `topicstar <#topicstar>`__
--  `uniq <#uniq>`__
--  `uppercase <#uppercase>`__
--  `video <#video>`__
--  `vocabulary <#vocabulary>`__
--  `word <#word>`__
--  `xml <#xml>`__
+-  `date <#date>`__: 日付、時刻取得要素
+-  `delay <#delay>`__: 遅延要求設定要素。
+-  `deletetriple <#deletetriple>`__: RDFナレッジベースからのエレメント削除要素
+-  `denormalize <#denormalize>`__: 単語から文字列への変換要素
+-  `eval <#eval>`__: lean、learnfへのコンテンツ情報設定要素
+-  `explode <#explode>`__: 文字分割要素
+-  `first <#first>`__: 先頭単語取得要素
+-  `extension <#extension>`__：拡張機能要素
+-  `formal <#formal>`__: 先頭文字大文字化要素
+-  `gender <#gender>`__: 人称名詞変換要素
+-  `get <#get>`__: 変数内容取得要素
+-  `id <#id>`__: クライアント名取得要素
+-  `image <#image>`__: 画像情報指定要素
+-  `implode <#implode>`__: 文字列結合要素
+-  `input <#input>`__: pattern文取得要素
+-  `interval <#interval>`__: 時刻差分計算要素
+-  `json <#json>`__: JSON要素
+-  `learn <#learn>`__: category有効化要素
+-  `learnf <#learnf>`__: category有効化要素
+-  `li <#li>`__: 対話分岐条件記述要素
+-  `link <#link>`__: URL情報指定要素
+-  `list <#list>`__: リスト形式情報指定要素
+-  `log <#log>`__: ログ出力要素
+-  `lowercase <#lowercase>`__: 英文字小文字化要素
+-  `map <#map>`__: key、value変換要素
+-  `nluintent <#nluintent>`__: NLUインテント取得要素
+-  `nluslot <#nluslot>`__: NLUスロット取得要素
+-  `normalize <#normalize>`__: 文字列から単語への変換要素
+-  `oob <#oob>`__: Out of Band要素
+-  `olist <#olist>`__: オーダーリスト形式指定要素
+-  `person <#person>`__: 人称名詞変換要素
+-  `person2 <#person2>`__: 人称名詞変換要素
+-  `program <#program>`__: プログラムバージョン取得要素
+-  `random <#random>`__: ランダム分岐指定要素
+-  `reply <#reply>`__: ユーザへの提示内容指定要素
+-  `request <#request>`__: 入力履歴取得要素
+-  `resetlearn <#resetlearn>`__: learn情報リセット要素
+-  `resetlearnf <#resetlearnf>`__: learnf情報リセット要素
+-  `response <#response>`__: 出力履歴取得要素
+-  `rest <#rest>`__: 先頭単語以外取得要素
+-  `set <#set>`__: 変数設定要素
+-  `select <#select>`__: RDFナレッジベースを検索要素
+-  `sentence <#sentence>`__: 英文整形要素
+-  `size <#size>`__: カテゴリ数取得要素
+-  `space <#space>`__: 半角スペース挿入要素
+-  `split <#split>`__：応答文分割要素
+-  `sr <#sr>`__: sraiとstarの省略要素
+-  `srai <#srai>`__ パターンマッチ再実行要素
+-  `sraix <#sraix>`__: REST API呼び出し機能
+-  `star <#star>`__: ワイルドカード要素取得
+-  `system <#system>`__: システムコール実行要素
+-  `that <#that>`__: 過去応答文取得要素
+-  `thatstar <#thatstar>`__: 過去応答文ワイルドカード取得要素
+-  `think <#think>`__: 内部処理記述要素
+-  `topicstar <#topicstar>`__: topicに対するワイルドカード取得要素
+-  `uniq <#uniq>`__: RDFナレッジベースを検索要素
+-  `uppercase <#uppercase>`__: 英文字大文字化要素
+-  `video <#video>`__: ビデオ情報指定要素
+-  `vocabulary <#vocabulary>`__: シナリオ単語数取得要素
+-  `word <#word>`__: 単語ノードを示す定義
+-  `xml <#xml>`__: 未定義XMLノードの定義
 
 詳細
 ============
@@ -98,7 +99,7 @@ addtriple要素により、RDFナレッジベースにエレメント(知識)を
 エレメントの構成要素には、subject (主語)、predicate (述語)、object (目的語)の3つのアイテムがあります。
 addtriple要素の詳細については、:doc:`RDFサポート<RDF_Support>` を参照してください。
 
-下の使用例では、ユーザの発話文「私はカレーが好きだ」に対して、subject='私'、pred='好き', object='カレー' のアイテムで構成されるエレメント(知識)をRDFナレッジベースに登録します。
+以下の使用例では、ユーザの発話文「私はカレーが好きだ」に対して、subject='私'、pred='好き', object='カレー' のアイテムで構成されるエレメント(知識)をRDFナレッジベースに登録します。
 
 * 使用例
 
@@ -142,8 +143,8 @@ authorise要素を使うことにより、template要素内に記述されるAIM
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "role","文字列","Yes","ロール名"
-    "denied_srai","文字列","No","認証失敗時のsrai先"
+    "role","string","Yes","ロール名"
+    "denied_srai","string","No","認証失敗時のsrai先"
 
 * 使用例
 
@@ -196,7 +197,7 @@ bot固有のプロパティを取得します。この要素は読み込み専�
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "name","文字列","Yes","基本的に、name,birthdate,app_version,grammar_versionのいずれかを記載(properties.txtで変更可能)。"
+    "name","string","Yes","基本的に、name,birthdate,app_version,grammar_versionのいずれかを記載(properties.txtで変更可能)。"
 
 * 使用例
 
@@ -234,7 +235,7 @@ button
 [2.1]
 
 button要素は、会話中にユーザにタップを促す用途で利用されるリッチメディア要素です。 
-子要素として、buttonの表記に使用するテキスト、Botに対するpostback、ボタン押下時のurlを記載できます。
+子要素として、buttonの表記に使用するテキスト、Botに対するpostback、ボタン押下時のURLを記載できます。
 
 * 子要素
 
@@ -242,9 +243,9 @@ button要素は、会話中にユーザにタップを促す用途で利用さ�
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "text","文字列","Yes","ボタンへの表示テキストを記載します。"
-    "postback","文字列","No","ボタン押下時の動作を記載します。ユーザにはこのメッセージは見せずBotに対するレスポンスやアプリケーションで処理を行う場合に利用します。"
-    "url","文字列","No","ボタン押下時のURLを記載します。"
+    "text","string","Yes","ボタンに表示するテキストを記載します。"
+    "postback","string","No","ボタン押下時の動作を記載します。ユーザにはこのメッセージは見せずBotに対するレスポンスやアプリケーションで処理を行う場合に利用します。"
+    "url","string","No","ボタン押下時のURLを記載します。"
 
 * 使用例
 
@@ -275,7 +276,7 @@ card
 ----------
 [2.1]
 
-カードは、画像、ボタン、タイトル、サブタイトルなど、いくつかの他の要素を使用し1つのカードとします。
+card要素は、画像、ボタン、タイトル、サブタイトルなど、いくつかの他の要素を使用し1つのカードとします。
 これらのリッチメディア要素すべてを含むメニューが表示されます。
 
 * 子要素
@@ -284,10 +285,10 @@ card
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "title","文字列","Yes","カードのタイトルを記載します。"
-    "subtitle","文字列","No","カードに対する追加情報を記載します。"
-    "image","文字列","Yes","カード用の画像URL等を記載します。"
-    "button","文字列","Yes","カード用のボタン情報を記載します。"
+    "title","string","Yes","カードのタイトルを記載します。"
+    "subtitle","string","No","カードに対する追加情報を記載します。"
+    "image","string","Yes","カード用の画像URL等を記載します。"
+    "button","string","Yes","カード用のボタン情報を記載します。"
 
 
 * 使用例
@@ -298,13 +299,13 @@ card
         <pattern>検索</pattern>
         <template>
             <card>
-            <title>カードメニュー</title>
-            <subtitle>カードメニュー詳細情報</subtitle>
-            <image>https://searchsite.com/image.png</image>
-            <button>
-                <text>検索しますか？</text>
-                <url>https://searchsite.com</url>
-            </button>
+                <title>カードメニュー</title>
+                <subtitle>カードメニュー詳細情報</subtitle>
+                <image>https://searchsite.com/image.png</image>
+                <button>
+                    <text>検索しますか？</text>
+                    <url>https://searchsite.com</url>
+                </button>
             </card>
         </template>
     </category>
@@ -316,7 +317,7 @@ carousel
 --------------
 [2.1]
 
-カルーセルは、カード要素を複数利用しタップスルーメニューを表示します。
+carousel要素は、カード要素を複数利用しタップスルーメニューを表示します。
 これらのリッチメディア要素すべてを含むメニューが表示されます。
 
 * 子要素
@@ -325,7 +326,7 @@ carousel
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "card","文字列","Yes","複数のカードを指定します。一度にカードを1つ表示、タップスルーで別のカードを表示します。"
+    "card","string","Yes","複数のカードを指定します。一度にカードを1つ表示、タップスルーで別のカードを表示します。"
 
 
 * 使用例
@@ -362,7 +363,7 @@ condition
 | template内で条件判断を記述する際に使用し、switch-caseのような処理を記載できます。
 | conditionの属性で指定した変数を、liの属性で判断することで分岐を記載します。
 | get/setで定義した変数、及び、Bot固有情報を条件名として使用します。
-| 変数型の varはローカル変数、nameはグローバル変数、dataはグローバル変数で、APIからのdeleteVariableでtrueが指定されるまで保持する変数として作用します。
+| 変数型の varはローカル変数、nameはグローバル変数、dataはグローバル変数です。
 | 以下に、conditionの記載方法を説明します。
 
 
@@ -384,7 +385,7 @@ condition
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "li","文字列","No","指定した変数に対する分岐条件を記載します。"
+    "li","string","No","指定した変数に対する分岐条件を記載します。"
 
 ※属性の各パラメータも子要素として指定できます。
 
@@ -462,7 +463,7 @@ condition
 .. _condition_looping:
 
 ループ処理
-~~~~~~~
+~~~~~~~~~~~~~~
 
 | <loop>は<li>の子要素の1つとして記載します。
 | 通常<li>で分岐した場合、処理内容を<template>として返しますが<loop>がある場合、対象となる<li>に分岐し、<li>の処理を終えた後、<condition>の内容を再評価します。
@@ -499,7 +500,7 @@ date
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "format","文字列","No","出力形式指定。未指定時は%c"
+    "format","string","No","出力形式指定。未指定時は%c"
 
 * 子要素
 
@@ -507,7 +508,7 @@ date
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "format","文字列","No","出力形式指定。未指定時は%c"
+    "format","string","No","出力形式指定。未指定時は%c"
 
 * 使用例
 
@@ -542,7 +543,7 @@ delay要素は遅延を行う要素です。
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "seconds","文字列","Yes","遅延秒数を指定。"
+    "seconds","string","Yes","遅延秒数を指定。"
 
 * 使用例
 
@@ -617,11 +618,14 @@ denormalize
 .. code:: xml
 
    <category>
-       <pattern>URLは *</pattern>
+       <pattern>URLは *です。</pattern>
        <template>
-            <denormalize />を復元します。
+            <denormalize />に変換します。
        </template>
    </category>
+
+| Input: URLは___です。
+| Output: ***に変換します。
 
 関連項目: :ref:`ファイル管理：denormal<storage_entity>`, `normalize <#normalize>`__
 
@@ -629,10 +633,10 @@ eval
 ----------
 [1.0]
 
-evalは通常、`learn <#learn>`__、`learnf <#learnf>`__ 要素の一部として利用されます。
+evalは、`learn <#learn>`__、`learnf <#learnf>`__ 要素の一部として利用されます。
 evalはテキスト化されたコンテンツを返す要素を評価します。
 
-次の例では、変数'name'が'マロン'に設定され、変数'animal'に'犬'が設定されます。その後このlearnfノードに合致する入力、'マロンは誰ですか'という入力を行うと、'あなたのペットの犬です。'と返します。
+次の例では、変数'name'に'マロン'が設定され、変数'animal'に'犬'が設定されます。その後このlearnfノードに合致する、'マロンは誰ですか'という入力を行うと、'あなたのペットの犬です。'と返します。
 
 * 使用例
 
@@ -648,19 +652,19 @@ evalはテキスト化されたコンテンツを返す要素を評価します�
             </think>
             <learnf>
                 <category>
-                <pattern>
-                    <eval>
-                        <get name="name"/>
-                    </eval>
-                    は誰ですか。
-                </pattern>
-                <template>
-                        あなたのペットの
-                    <eval>
-                        <get name="animal"/>
-                    </eval>
-                    です。
-                </template>
+                    <pattern>
+                        <eval>
+                            <get name="name"/>
+                        </eval>
+                        は誰ですか。
+                    </pattern>
+                    <template>
+                            あなたのペットの
+                        <eval>
+                            <get name="animal"/>
+                        </eval>
+                        です。
+                    </template>
                 </category>
             </learnf>
         </template>
@@ -766,7 +770,7 @@ extensionは、 ``programy.extensions.Extension`` インタフェースを実装
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "path","文字列","Yes","利用extension名。"
+    "path","string","Yes","利用extension名。"
 
 * 使用例
 
@@ -860,7 +864,7 @@ get
 | （Botのプロパティ情報:properties.txtで、"default-get"の定義を行った場合、Configの定義よりも優先されます。）
 | getで取得できる値は、`set <#set>`__ を使って、対話処理実施時に値の設定を行います。
 | 起動時に値を設定する場合、defaults.txtに記載することで、グローバル変数(name)として利用することができます。
-| 変数種別には3種類あり、ローカル変数とグローバル変数で保持期間が異なります。
+| 変数種別には3種類あり、ローカル変数と保持期間が異なるグローバル変数が2種類あります。
 | また、子要素<tuples>を指定することで、RDFナレッジベースのエレメントも取得できます。詳細は、:doc:`RDFサポート<RDF_Support>` を参照してください。
 
 * ローカル変数(var)
@@ -880,26 +884,26 @@ get
 * 属性
 
 .. csv-table::
-    :header: "パラメータ","","タイプ","必須","説明"
-    :widths: 10,10,10,5,65
+    :header: "パラメータ","タイプ","必須","説明"
+    :widths: 10,10,5,65
 
-    "name","","変数名","Yes","var,name,dataのいずれかが設定されている必要があります。"
-    "var","","変数名","Yes","var,name,dataのいずれかが設定されている必要があります。"
-    "data","","変数名","Yes","var,name,dataのいずれかが設定されている必要があります。"
+    "name","変数名","Yes","var,name,dataのいずれかが設定されている必要があります。"
+    "var","変数名","Yes","var,name,dataのいずれかが設定されている必要があります。"
+    "data","変数名","Yes","var,name,dataのいずれかが設定されている必要があります。"
 
 
-| AIMLの変数を値として指定する場合にアトリビュートでは指定できないため、子要素としても指定できるようにしています。
-| 動作はアトリビュートと同じ動作になります。同じアトリビュート名、子要素名を指定した場合子要素の設定が優先されます。
+| AIMLの変数を値として指定する場合に属性では指定できないため、子要素としても指定できるようにしています。
+| 動作は属性と同じ動作になります。同じ属性名、子要素名を指定した場合子要素の設定が優先されます。
 
 * 子要素
 
 .. csv-table::
-    :header: "パラメータ","","タイプ","必須","説明"
-    :widths: 10,10,10,5,65
+    :header: "パラメータ","タイプ","必須","説明"
+    :widths: 10,10,5,65
 
-    "name","","変数名","Yes","var,name,dataのいずれかが設定されている必要があります。"
-    "var","","変数名","Yes","var,name,dataのいずれかが設定されている必要があります。"
-    "data","","変数名","Yes","var,name,dataのいずれかが設定されている必要があります。"
+    "name","変数名","Yes","var,name,dataのいずれかが設定されている必要があります。"
+    "var","変数名","Yes","var,name,dataのいずれかが設定されている必要があります。"
+    "data","変数名","Yes","var,name,dataのいずれかが設定されている必要があります。"
 
 
 
@@ -989,7 +993,7 @@ implode
 .. code:: xml
 
    <category>
-       <pattern>Implode the acronym *</pattern>
+       <pattern>Implode *</pattern>
        <template>
            <implode />
        </template>
@@ -1036,9 +1040,9 @@ interval
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "from","文字列","Yes","計算を行う始端時刻を記載。"
-    "to","文字列","Yes","計算を行う終端開始時刻を記載。"
-    "style","文字列","Yes","intervalで返す単位を記載。 years,months,days,secondsのいずれか。"
+    "from","string","Yes","計算を行う始端時刻を記載。"
+    "to","string","Yes","計算を行う終端開始時刻を記載。"
+    "style","string","Yes","intervalで返す単位を記載。 years,months,days,secondsのいずれか。"
 
 
 * 使用例
@@ -1071,12 +1075,12 @@ json
 [custom]
 
 | JSONをAIMLで利用するための機能です。
-| :doc:`SubAgent<SubAgent>`、:doc:`Metadata<Metadata>`、:doc:`NLU<NLU>` (高度意図解釈)などで使用するJSONデータを利用するために使用します。
+| :doc:`SubAgent<SubAgent>`、:doc:`metadata<Metadata>`、:doc:`NLU<NLU>` (高度意図解釈)などで使用するJSONデータを利用するために使用します。
 | 詳細は、 :doc:`JSON <JSON>` を参照してください。
 
 | 属性／子要素のname/var/dataで指定する変数名には、get/setで定義した変数名を使用します。
-| 変数型 varはローカル変数、nameはグローバル変数、dataはグローバル変数で、APIからのdeleteVariableでtrueが指定されるまで保持する変数として作用します。
-| また、メタデータ変数や、サブエージェン戻り値等のシステム固定変数名も利用できます。
+| 変数型 varはローカル変数、nameはグローバル変数、dataはグローバル変数です。
+| また、メタデータ変数や、サブエージェントの戻り値等のシステム固定変数名もnameとして利用できます。
 
 * 属性
 
@@ -1088,7 +1092,7 @@ json
     "var","","JSON名","Yes","パースを行うJSONを指定します。var,name,dataのいずれかが設定されている必要があります。"
     "data","","JSON名","Yes","パースを行うJSONを指定します。var,name,dataのいずれかが設定されている必要があります。"
     "function","","関数名","No","JSONに対する処理を記述します。"
-    "","len","関数名","No","対象のJSONプロパティが配列の場合、'配列長を取得します。対象がJSONオブジェクトの場合、JSONオブジェクトの要素数を取得します。"
+    "","len","関数名","No","対象のJSONプロパティが配列の場合、配列長を取得します。対象がJSONオブジェクトの場合、JSONオブジェクトの要素数を取得します。"
     "","delete","関数名","No","対象プロパティを削除します。配列の場合でindexを指定していると対象となる要素を削除します。"
     "","insert","関数名","No","JSON配列に対する値の追加を指定します。配列番号(index)とともに指定します。"
     "index","","インデックス","No","JSONデータを取得する場合のインデックスを指定します。対象が配列の場合、配列番号を指します。JSONオブジェクトではキーを先頭から順に数えたオブジェクトを指します。JSONデータを設定・変更する場合、配列のみに指定できます。"
@@ -1113,7 +1117,7 @@ json
 * 使用例
 
 | "transit"というSubAgentからの、レスポンスが返ってきた場合のJSONのデータを取得し、レスポンスとして利用する場合を説明します。
-| 下記のjsonデータがSubAgentから返却された場合、"__SUBAGENT__.transit"がSubAgentからのレスポンスデータの格納変数名になります。
+| 以下のjsonデータがSubAgentから返却された場合、"__SUBAGENT__.transit"がSubAgentからのレスポンスデータの格納変数名になります。
 | JSONデータを取得する場合、属性に対象となるjson名を指定しますが、この場合"__SUBAGENT__.transit"が対象json名となります。
 | JSONデータの子要素の取得を行う場合、json名に、要素毎のキー名を"."で繋げたプロパティを指定します。
 
@@ -1261,11 +1265,11 @@ li要素では、<condition>で指定する分岐条件を記載します。
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "think","文字列","No","動作に作用しない定義を記載。"
-    "set","文字列","No","変数の設定を行います。"
-    "get","文字列","No","変数の値を取得します。"
-    "loop","文字列","No","<condition>に対するループを指定します。"
-    "star","文字列","No","入力のワイルドカードを再利用します。"
+    "think","string","No","動作に作用しない定義を記載します。"
+    "set","string","No","変数の設定を行います。"
+    "get","string","No","変数の値を取得します。"
+    "loop","string","No","<condition>に対するループを指定します。"
+    "star","string","No","入力のワイルドカードを再利用します。"
 
 関連項目: `condition <#condition>`__, :ref:`loop <condition_looping>`,  `think <#think>`__, `set <#set>`__, `get <#get>`__, `star <#star>`__
 
@@ -1283,8 +1287,8 @@ link要素は、会話中にユーザに表示するURLなどの用途で利用�
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "text","文字列","Yes","ボタンへの表示テキストを記載します。"
-    "url","文字列","No","ボタン押下時のURLを記載します。"
+    "text","string","Yes","ボタンへの表示テキストを記載します。"
+    "url","string","No","ボタン押下時のURLを記載します。"
 
 .. code:: xml
 
@@ -1303,14 +1307,14 @@ list
 ----------
 [2.1]
 
-link要素は、itemに記載した要素をリスト形式で返すリッチメディア要素です。 
+list要素は、itemに記載した要素をリスト形式で返すリッチメディア要素です。 
 子要素のitemにリストの内容を記載することができます。また、itemにlistを記載し入れ子にすることもできます。
 
 .. csv-table::
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "item","文字列","Yes","リストの内容を記載します。"
+    "item","string","Yes","リストの内容を記載します。"
 
 .. code:: xml
 
@@ -1404,7 +1408,7 @@ lowercase
    <category>
        <pattern>こんにちは * です</pattern>
        <template>
-           こんにちは <lowercase><star /></lowercase>さん
+           こんにちは <lowercase />さん
        </template>
    </category>
 
@@ -1457,7 +1461,7 @@ nluintent
 [custom]
 
 | NLU結果のintent情報を取得するための機能です。
-| NLU結果がある場合のみ値が返ります。従って、基本的にpatternに :ref:`nluタグ<pattarn_nlu>` を指定したcategoryにマッチした場合のtemplateで利用します。
+| NLU結果がある場合のみ値が返ります。従って、基本的にpatternに :ref:`nluタグ<pattern_nlu>` を指定したcategoryにマッチした場合のtemplateで利用します。
 | 詳細は、 :doc:`NLU <NLU>` を参照してください。
 
 * 属性
@@ -1489,7 +1493,7 @@ nluintent
 * 使用例
 
 NLUの処理結果のインテント情報を取得します。
-下記例のNLU処理結果からインテントを取得する場合を説明します。
+以下例のNLU処理結果からインテントを取得する場合を説明します。
 
 .. code:: json
 
@@ -1505,7 +1509,7 @@ NLUの処理結果のインテント情報を取得します。
         ]
     }
 
-NLUで処理したインテントを取得する場合下記のように記述します。
+NLUで処理したインテントを取得する場合以下のように記述します。
 
 .. code:: xml
 
@@ -1530,7 +1534,7 @@ nluslot
 [custom]
 
 | NLU結果のslot情報を取得するための機能です。
-| NLU結果がある場合のみ値が返ります。従って、基本的にpatternに :ref:`nluタグ<pattarn_nlu>` を指定したcategoryにマッチした場合のtemplateで利用します。
+| NLU結果がある場合のみ値が返ります。従って、基本的にpatternに :ref:`nluタグ<pattern_nlu>` を指定したcategoryにマッチした場合のtemplateで利用します。
 | 詳細は、 :doc:`NLU <NLU>` を参照してください。
 
 * 属性
@@ -1563,7 +1567,7 @@ AIMLの変数を値として指定する場合に属性では指定できない�
 * 使用例
 
 NLUの処理結果のスロット情報を取得します。
-下記例のNLU処理結果からスロットを取得する場合を説明します。
+以下例のNLU処理結果からスロットを取得する場合を説明します。
 
 .. code:: json
 
@@ -1579,7 +1583,7 @@ NLUの処理結果のスロット情報を取得します。
         ]
     }
 
-NLUで処理したスロットを取得する場合下記のように記述します。
+NLUで処理したスロットを取得する場合以下のように記述します。
 
 .. code:: xml
 
@@ -1651,7 +1655,7 @@ olist(ordered list)要素は、itemに記載した要素をリスト形式で返
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "item","文字列","Yes","リストの内容を記載します。"
+    "item","string","Yes","リストの内容を記載します。"
 
 .. code:: xml
 
@@ -1845,7 +1849,7 @@ reply
 [2.1]
 
 reply要素は、リッチメディア要素でbutton要素に似ています。
-子要素として、読み上げに使用するてtext、Botに対するpostbackを記載します。
+子要素として、読み上げに使用するtext、Botに対するpostbackを記載します。
 replyとbuttonの違いは、GUIを利用せず音声対話などで利用することを想定しています。
 
 * 子要素
@@ -1854,8 +1858,8 @@ replyとbuttonの違いは、GUIを利用せず音声対話などで利用する
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "text","文字列","Yes","読み上げテキストを記載します。"
-    "postback","文字列","No","動作を記載します。ユーザにはこのメッセージは見せずBotに対するレスポンスやアプリケーションで処理を行う場合に利用します。"
+    "text","string","Yes","読み上げテキストを記載します。"
+    "postback","string","No","動作を記載します。ユーザにはこのメッセージは見せずBotに対するレスポンスやアプリケーションで処理を行う場合に利用します。"
 
 * 使用例
 
@@ -1886,7 +1890,7 @@ request
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "index","文字列","No","入力番号。0が現在の入力、未指定時はindex='1'と同義。"
+    "index","string","No","入力番号。0が現在の入力、未指定時はindex='1'と同義。"
 
 * 使用例
 
@@ -1981,7 +1985,7 @@ response
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "index","文字列","No","入力番号。未指定時はindex='1'と同義。"
+    "index","string","No","入力番号。未指定時はindex='1'と同義。"
 
 * 使用例
 
@@ -2157,7 +2161,7 @@ sentence
        </template>
    </category>
 
-| Input: CORRECT THIS PleAse tEll Us The WeSthEr ToDay.
+| Input: CORRECT THIS PleAse tEll Us The WeAthEr ToDay.
 | Output: Please tell us the weather today.
 
 
@@ -2304,7 +2308,7 @@ sraix
 -----------
 [2.0]
 
-外部とのREST通信用APIを呼び出します。サブエージェント呼び出しに利用します。
+外部とのREST APIを呼び出します。サブエージェント呼び出しに利用します。
 sraixの利用方法の詳細は :doc:`SubAgent<SubAgent>` を参照してください。
 
 * 属性
@@ -2313,8 +2317,8 @@ sraixの利用方法の詳細は :doc:`SubAgent<SubAgent>` を参照してくだ
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "service","文字列","No","カスタム外部サービスのサービス名。"
-    "botid","文字列","No","対話プラットフォームで公開されているbot名。"
+    "service","string","No","カスタム外部サービスのサービス名。"
+    "botid","string","No","対話プラットフォームで公開されているbot ID。"
 
 * 使用例
 
@@ -2340,8 +2344,8 @@ star
 [1.0]
 
 | star要素はワイルドカードで取得したユーザ入力を利用するための記述です。
-| ワイルドカードは、1つ以上の文字列を指定する ``*``, ``_``、もしくは0以上の文字列を指定する ``^``, ``#`` に該当する文字列を意味し、先頭から順にIndex(1〜)が振られます。
-| また、pattern要素の ``set``、``iset``、``regex``、``bot`` 要素に該当する文字列もIndexの対象になります。
+| ワイルドカードは、1つ以上の文字列を指定する ``*``, ``_``、もしくは0以上の文字列を指定する ``^``, ``#`` に該当する文字列を意味し、先頭から順にindex(1〜)が振られます。
+| また、pattern要素の ``set``、``iset``、``regex``、``bot`` 要素に該当する文字列もindexの対象になります。
 | 該当する情報がなかった場合、 空文字列が返ります。
 
 * 属性
@@ -2350,7 +2354,7 @@ star
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "index","文字列","No","入力番号。未指定時はindex='1'と同義。"
+    "index","string","No","入力番号。未指定時はindex='1'と同義。"
 
 
 * 使用例
@@ -2405,7 +2409,7 @@ templateの要素として指定された場合の ``that`` は、Botからの�
     :header: "パラメータ","タイプ","必須","説明"
     :widths: 10,10,5,75
 
-    "index","文字列","No","入力番号。未指定時はindex='1'と同義。"
+    "index","string","No","入力番号。未指定時はindex='1'と同義。"
 
 
 * 使用例
@@ -2441,6 +2445,15 @@ thatstar
 | thatstarは、thatに対するワイルドカード指定として利用します。
 | patternに対する ``<star />`` と同じ方法でアクセスされますが、 ``pattern`` のワイルドカードではなく ``that`` に含んだワイルドカードを利用する際に ``<thatstar />`` を使用します。
 | 取得に失敗した場合、 空文字列が返ります。
+
+
+* 属性
+
+.. csv-table::
+    :header: "パラメータ","タイプ","必須","説明"
+    :widths: 10,10,5,75
+
+    "index","string","No","入力番号。未指定時はindex='1'と同義。"
 
 * 使用例
 
@@ -2495,6 +2508,15 @@ topicstar
 | patternに対する ``<star />`` と同じ方法でアクセスされますが、patternのワイルドカードではなくtopicに含んだワイルドカードを利用する際に ``<topicstar />`` 使用します。
 | 属性に、"index"の指定も可能です。尚、取得に失敗した場合、 空文字列が返ります。
 
+
+* 属性
+
+.. csv-table::
+    :header: "パラメータ","タイプ","必須","説明"
+    :widths: 10,10,5,75
+
+    "index","string","No","入力番号。未指定時はindex='1'と同義。"
+    
 * 使用例
 
 .. code:: xml

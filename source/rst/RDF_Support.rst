@@ -13,9 +13,10 @@ RDFサポート
 AIML tripleファイル
 ----------------------------------------
 
-| "triple"は、Subject、Predicate、Objectをコロン '：'で区切った1行のテキストです。本プログラムではこの1行をエレメントと称します。
+| "triple"は、subject、predicate、objectをコロン '：'で区切った1行のテキストです。本プログラムではこの1行をエレメントと称します。
 | RDF定義を飛行機の例で説明します。
-| この定義には、"subject"が"AIRPLANE"として記載されており、多数の"predicate"でそれぞれの値("object")を説明しています。
+| この定義では、"AIRPLANE"という"subject"に対し、複数の"predicate"とpredicateに対応する"object"を定義した例です。
+
 
 ::
 
@@ -30,8 +31,8 @@ AIML tripleファイル
 AIML RDF タグ
 ----------------------------------------
 
-| AIMLには、"addtriple", "deletetriple", "select", "uniq" といった作成、削除、検索を行うタグが定義されています。
-| また、検索結果を処理するには、"set", "get", "first", "rest" 等のタグも使用できます。
+| AIMLには、"addtriple"、"deletetriple"、"select"、"uniq" といった作成、削除、検索を行うタグが定義されています。
+| また、検索結果を処理するには、"set"、"get"、"first"、"rest" 等のタグも使用できます。
 
 エレメントロード
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -92,10 +93,10 @@ AIML RDF タグ
 .. code:: xml
 
    <addtriple>
-     <subj>cow</subj><pred>sound</pred><obj>moo</obj>
+        <subj>cow</subj><pred>sound</pred><obj>moo</obj>
    </addtriple>
    <addtriple>
-     <subj>dog</subj><pred>sound</pred><obj>woof</obj>
+        <subj>dog</subj><pred>sound</pred><obj>woof</obj>
    </addtriple>
 
 ただし、addtripleで追加したデータは永続的ではありません。
@@ -180,7 +181,7 @@ select要素を用いてRDFの検索を行います。
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 | より複雑な検索を行う必要がある場合は、複数のクエリを連鎖させることができ、それぞれが'and'クエリとして結合されます。
-| 下記の2つのタイプのクエリは、<q>タグに一致する結果の中で、<notq>タグと一致しない結果を返します
+| 以下の2つのタイプのクエリは、<q>タグに一致する結果の中で、<notq>タグと一致しない結果を返します
 
 .. code:: xml
 
@@ -226,7 +227,7 @@ select要素を用いてRDFの検索を行います。
        </tuple>
    </get>
 
-| この例の場合、getの'var'アトリビュートに、select要素で指定した変数 "?x" を指定しています。
+| この例の場合、getの'var'属性に、select要素で指定した変数 "?x" を指定しています。
 | 次に、tupleタグで、select要素の結果を格納した"tuples"(リストオブジェクト)を指定することで、"tuples"の中から、変数 "?x" に該当するデータが取得できます。
 | 結果として、変数 "?x" からは以下の内容が取得できます。
 | BAT BEAR BUFFALO CAT CHICKEN DOLPHIN FISH DOG

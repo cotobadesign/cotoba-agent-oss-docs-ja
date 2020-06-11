@@ -2,9 +2,11 @@
 COTOBA Agent dialog engine API
 ==============================================================
 
+.. _coversation_api:
+
 対話API
 ===============================
-対話エンジンをREST APIクラス(programy.clients.restful.yadlan.sanic.client)を用いで立ち上げた場合に利用されるAPIです。
+対話エンジンをREST APIクラス(programy.clients.restful.yadlan.sanic.client)を用いて立ち上げた場合に利用されるAPIです。
 ユーザの発話文を含むリクエストをボットに送信し、ボットからの応答文を含むレスポンスを取得します。
 
 

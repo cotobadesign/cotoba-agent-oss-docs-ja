@@ -35,7 +35,7 @@ aiml
 
     *
       + version
-      + 文字列
+      + string
       + Yes
       + 記述されているAIMLのバージョンを指定します。
 
@@ -74,11 +74,10 @@ category
             <pattern>こんにちは</pattern>
             <template>今日もいい天気ですね</template>
         </category>
-
-	<category>
-	    <pattern>さようなら</pattern>
-	    <template>明日また会いましょう</template>
-	</category>
+	    <category>
+	        <pattern>さようなら</pattern>
+	        <template>明日また会いましょう</template>
+	    </category>
     </aiml>
 
 | Input: こんにちは
@@ -169,7 +168,7 @@ topic
       + 説明
     *
       + name
-      + 文字列
+      + string
       + Yes
       + topic名を指定します。
 

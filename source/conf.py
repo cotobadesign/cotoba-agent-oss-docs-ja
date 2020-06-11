@@ -177,4 +177,7 @@ epub_copyright = copyright
 # A list of files that should not be packed into the epub file.
 epub_exclude_files = ['search.html']
 
-html_theme = 'default'
+
+# -- Extension configuration -------------------------------------------------
+html_theme = 'sphinx_rtd_theme'
+html_style = "css/custom_theme.css"

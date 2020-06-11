@@ -10,7 +10,7 @@
 
 設定例
 
-| 下記のように、コンフィグファイルに ``LICENSE_KEY:VALUE`` と記載しておきます。
+| 以下のように、コンフィグファイルに ``LICENSE_KEY:VALUE`` と記載しておきます。
 | ``LICENSE_KEY:`` は固定値で、 ``VALUE`` はlicense.keysに記載するキー名を指定します。
 
 .. code:: yaml
@@ -20,7 +20,7 @@
        username: LICENSE_KEY:EMAIL_USERNAME
        password: LICENSE_KEY:EMAIL_PASSWORD
 
-license.keysに下記のように記載すると、実行時に上記のLICENSE_KEY:VALUEをlicense.keysの内容で置換し動作します。
+license.keysに以下のように記載すると、実行時に上記のLICENSE_KEY:VALUEをlicense.keysの内容で置換し動作します。
 
 .. code:: text
 
@@ -33,14 +33,14 @@ gitを利用する場合、license.keysを.gitignoreに設定することで意�
 .. _config_subsitutions:
 
 コマンドラインオプション置換
--------------------------
+--------------------------------
 
 | substitutions.txtファイルをコマンドライン引数にし、対話エンジンを起動すると、起動時の引数として置換するパラメータを指定することが出来ます。
 | コマンドラインオプション --subs で指定したファイルで置換を行います。
 
 設定例
 
-| 下記のように、コンフィグファイルに $ +VALUE と記載しておきます。
+| 以下のように、コンフィグファイルに $ +VALUE と記載しておきます。
 | VALUEはsubstitutions.txtに記載するキー名を指定します。
 
 .. code:: yaml
@@ -50,7 +50,7 @@ gitを利用する場合、license.keysを.gitignoreに設定することで意�
        host: $EMAIL_HOST
        port: $EMAIL_PORT
 
-substitutions.txtを下記のように記載すると、実行時に上記の$VALUEをsubstitutions.txtの内容で置換し、動作します。
+substitutions.txtを以下のように記載すると、実行時に上記の$VALUEをsubstitutions.txtの内容で置換し、動作します。
 
 .. code:: text
 

@@ -6,7 +6,7 @@
 | 以降の説明では、主に、対話プラットフォームで利用するファイル管理方式として、ローカルファイルを指定しています。
 | ファイル管理方式には、ローカルファイル以外にも、データベースでの管理もありますが、構成は同じになります。
 
-定義ファイルの拡張子は、シナリオファイルの拡張子はaiml、シナリオ以外の設定ファイルの拡張子はtxtです。
+定義ファイルの拡張子は、シナリオファイルがaiml、シナリオ以外の設定ファイルがtxtです。
 
 ディレクトリ構成
 ================================
@@ -233,7 +233,7 @@ fileストレージエンジンの定義
 単一ファイルのエンティティの場合
 ------------------------------------------------
 
-単一ファイルを指定するエンティティの場合、'file'アトリビュートでファイルパスを指定します。
+単一ファイルを指定するエンティティの場合、'file'属性でファイルパスを指定します。
 
 .. code:: yaml
 
@@ -243,7 +243,7 @@ fileストレージエンジンの定義
 複数ファイルの利用が可能なエンティテイの場合
 ------------------------------------------------------
 
-複数ファイルが利用可能なエンティティの場合、以下の3つのアトリビュートを指定します。
+複数ファイルが利用可能なエンティティの場合、以下の3つの属性を指定します。
 ただし、自動生成対象のエンティティの場合、ディレクトリパスのみの指定となります。
 
 - dirs: 対象ファイルディレクトリパスを指定。
@@ -354,18 +354,18 @@ properties
 
 .. csv-table::
     :header: "エンティティ","内容","説明","デフォルト値"
-    :widths: 10,30,30,30
+    :widths: 5,10,50,10
 
-    "name","ボット名",":ref:`bot<template_bot>` アトリビュートnameにnameを指定した際に取得できる値。","(未指定の場合default-getの値)"
-    "birthdate","ボット作成日",":ref:`bot<template_bot>` アトリビュートnameにbirthdateを指定した際に取得できる値。","(未指定の場合default-getの値)"
-    "grammar_version","グラマーバージョン",":ref:`bot<template_bot>` アトリビュートnameにgrammar_versionを指定した際に取得できる値。","(未指定の場合default-getの値)"
-    "app_version","アプリバージョン",":ref:`bot<template_bot>` アトリビュートnameにapp_versionを指定した際に取得できる値。","(未指定の場合default-getの値)"
+    "name","ボット名",":ref:`bot<template_bot>` のname属性にnameを指定した際に取得できる値。","(未指定の場合default-getの値)"
+    "birthdate","ボット作成日",":ref:`bot<template_bot>` のname属性にbirthdateを指定した際に取得できる値。","(未指定の場合default-getの値)"
+    "grammar_version","グラマーバージョン",":ref:`bot<template_bot>` のname属性にgrammar_versionを指定した際に取得できる値。","(未指定の場合default-getの値)"
+    "app_version","アプリバージョン",":ref:`bot<template_bot>` のname属性にapp_versionを指定した際に取得できる値。","(未指定の場合default-getの値)"
     "default-response","デフォルトレスポンス","マッチするpatternがなかった場合に返す応答文。","unknown"
-    "default-get","デフォルトget","未定義変数に対し、getを行なった場合に取得できる文字列。","unknown"
+    "default-get","デフォルトゲット","未定義変数に対し、getを行なった場合に取得できる文字列。","unknown"
     "joiner_terminator","文終端文字","応答文の語尾句等を自動的に付与する文字列を指定します。指定なしの場合何も付与しません。","。"
     "joiner_join_chars","文終端除外文字","joiner_terminatorの指定で文終端文字を自動付与する際に、joiner_terminator指定の文字を結合除外する文字列を指定します。 指定なしの場合、joiner_terminatorで指定した文字を付与します。",".?!。？！"
     "splitter_split_chars","文分割文字","内部的に文章分割を行う文字を指定します。指定された文字列が文中に含まれていると、複数文として扱い、responseに複数の応答文を結合した文字列を返します。ただし、metadataは最終文で設定した内容のみが返ります。指定なしの場合、 発話文を1文として扱います。","。"
-    "punctation_chars","区切り文字","区切り文字扱いを行う文字を指定します。区切り文字はマッチング対象外とし発話文、応答文から除外した形でマッチング処理を行います。","(無し)"
+    "punctuation_chars","区切り文字","区切り文字扱いを行う文字を指定します。区切り文字はマッチング対象外とし発話文、応答文から除外した形でマッチング処理を行います。","(無し)"
 
 * 設定例
 
@@ -384,7 +384,7 @@ properties
   joiner_terminator: 。 
   joiner_join_chars: .?!。？！
   splitter_split_chars:  。
-  punctation_chars: ;'",!()[]：’”；、。！（）「」 
+  punctuation_chars: ;'",!()[]：’”；、。！（）「」 
 
 
 joiner_terminator
@@ -427,10 +427,10 @@ joiner_terminator
 joiner_join_chars
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| joiner_terminatorの指定で文終端文字を自動付与する際に、joiner_terminator指定の文字を結合除外する文字列を指定します。
+| joiner_join_chars（結合除外文字）は、joiner_terminator(文終端文字)を自動付与する際に、結合除外する文字列を指定します。
 | joiner_join_chars未指定の場合、 応答文に"今日も元気に行きましょう。"、"いい気分ですね！"などの応答文を記載した場合に、joiner_terminator指定の文字を結合すると、
-| "今日も元気に行きましょう。。"、"いい気分ですね！。"のように、応答文記載の文末文字に加えjoiner_terminatorで指定した木を結合した応答文が返ります。
-| joiner_join_charsに結合除外文字を指定しておくと、"そうですね!"、"こんにちは。"と、joiner_terminatorを結合しない応答文を返します。
+| "今日も元気に行きましょう。。"、"いい気分ですね！。"のように、応答文記載の文末文字に加えjoiner_terminatorで指定した句点を結合した応答文が返ります。
+| joiner_join_charsを指定しておくと、"そうですね!"、"こんにちは。"と、joiner_terminatorを結合しない応答文を返します。
 
 * 設定例
 
@@ -509,17 +509,17 @@ splitter_split_charsを未指定にすると、発話文が分割されないた
 | Output: すみません、意味がわかりませんでした。
 
 
-punctation_chars
+punctuation_chars
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 入力文の区切り文字扱いを行う文字を指定します。区切り文字はマッチング対象外とし発話文から除外した形でマッチング処理を行います。
-"こんにちは。"および"こんにちは"という入力がある場合、punctation_charsに指定された文字は、無視され同一発話扱いになります。
+"こんにちは。"および"こんにちは"という入力がある場合、punctuation_charsに指定された文字は、無視され同一発話扱いになります。
 
 * 設定例
 
 .. code:: 
 
-  punctation_chars: ;'",!()[]：’”；、。！（）「」 
+  punctuation_chars: ;'",!()[]：’”；、。！（）「」 
 
 .. code:: xml
 
@@ -534,11 +534,11 @@ punctation_chars
 | Output: 今日も元気に行きましょう。
 
 
-punctation_charsを未指定にすると、"。"もマッチ対象となるため、"こんにちは。"と"こんにちは"は別発話扱いとなります。
+punctuation_charsを未指定にすると、"。"もマッチ対象となるため、"こんにちは。"と"こんにちは"は別発話扱いとなります。
 
 .. code::
 
-  punctation_chars:
+  punctuation_chars:
 
 | Input: こんにちは
 | Output: 今日も元気に行きましょう。
@@ -567,8 +567,8 @@ maps
 nlu_servers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| ``nlu_servers`` エンティティでは、エンティティでは、nluノードでのアクセス先URL(エンドポイント)とAPIキーを設定します。
-| nluノードで利用するアクセス先URL(エンドポイント)とAPIキーについては、COTOBA DESIGNにお問い合わせください。(https://www.cotoba.net)
+| ``nlu_servers`` エンティティでは、nluノードでのアクセス先URL(エンドポイント)、APIキーを設定します。
+| nluノードで利用するエンドポイント、APIキーについては、COTOBA DESIGNに問い合わせてください。(https://www.cotoba.net)
 | 以下の例は、2つのURLの設定を行った例です。1つ目のURLはAPIキー設定なし、2つ目のURLはAPIキーを設定しています。
 
 .. code:: yaml
@@ -605,10 +605,10 @@ nlu_servers
 
 以下のエンティティで指定するファイルでは、 ’正規表現名 : 正規表現文字列' の形式で記述します。
 
-- regex_templates ： ref:`regex<pattern_regex>` ノードのtemplate指定で使用する正規表現リストを定義。
+- regex_templates ： :ref:`regex<pattern_regex>` ノードのtemplate指定で使用する正規表現リストを定義。
 
 | ``regex_templates`` エンティティでは、regexノードで行うマッチ処理に使用する正規表現文字列を、共通的にファイルで定義するために使用します。
-| regexノード側では、templateアトリビュートで正規表現名を指定します。尚、正規表現の記述は、基本的に単語ベースで指定する必要があります。
+| regexノード側では、template属性で正規表現名を指定します。尚、正規表現の記述は、基本的に単語ベースで指定する必要があります。
 | 記述例は、以下の様になります。
 
 .. code:: 
