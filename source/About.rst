@@ -93,7 +93,7 @@ category要素は、AIMLの対話ルールの基本単位です。 category要�
     <category>
         <pattern>私のペットは*です</pattern>
         <template>
-            <think><set name="petcategory"><star/></set></think>
+            <think><set name="petcategory"><star /></set></think>
             <star/>が好きなんですね
         </template>
     </category>
@@ -101,7 +101,7 @@ category要素は、AIMLの対話ルールの基本単位です。 category要�
     <category>
         <pattern>ペットの名前は*です</pattern>
         <template>
-            <think><set name="petname"><star/></set></think>
+            <think><set name="petname"><star /></set></think>
             いい名前ですね。
         </template>
     </category>
@@ -110,8 +110,8 @@ category要素は、AIMLの対話ルールの基本単位です。 category要�
         <pattern>私のペット覚えてる？</pattern>
         <template>
             <condition name="petcategory">
-                <li value="犬">あなたのペットは犬の<get name="petname"/>ですよね</li>
-                <li value="猫">あなたのペットは猫の<get name="petname"/>ですよね</li>
+                <li value="犬">あなたのペットは犬の<get name="petname" />ですよね</li>
+                <li value="猫">あなたのペットは猫の<get name="petname" />ですよね</li>
                 <li>ペットは飼っていなかったよね</li>
             </condition>
         </template>
@@ -127,7 +127,7 @@ category要素は、AIMLの対話ルールの基本単位です。 category要�
 
 BOT連携
 ---------------------
-複数BOTを作成し各々の結果を連携し動作させることができます。連携にはsraix要素の外部REST API呼び出しを利用します。
+複数BOTを作成し各々の結果を連携し動作させることができます。REST通信での連携にはsraix要素の :ref:`汎用RESTインタフェース<subagent_rest>` を利用します。
 以下のように、既に作成したボットIDをホスト名の呼び出し先に指定し、bodyに必要な情報を設定します。
 
 BOTからの戻り値は、var:__SUBAGENT_BODY__に含まれており、json要素で取り出しを行うことができます。
@@ -142,19 +142,44 @@ BOTからの戻り値は、var:__SUBAGENT_BODY__に含まれており、json要�
             <pattern>サブエージェント*</pattern>
             <template>
                 <think>
-                    <json var="body.utterance"><star/></json>
-                    <json var="body.userId"><get var="__USER_USERID__"/></json>
-                    <set var="__SYSTEM_METADATA__"><json var="body"/></set>
+                    <json var="body.utterance"><star /></json>
+                    <json var="body.userId"><get var="__USER_USERID__" /></json>
                     <sraix>
-                        <host>https://HOSTNAME/bots/BOT_ID/ask</host>
-                    
+                        <host>https://HOSTNAME/bots/BOT_ID/ask</host>                    
                         <method>POST</method>
                         <header>"Content-Type":"application/json;charset=UTF-8"</header>
-                        <body><json var="body"/></body>
+                        <body><json var="body" /></body>
                     </sraix>
-                    
                 </think>
-                <json var="__SUBAGENT_BODY__.response"/>
+                <json var="__SUBAGENT_BODY__.response" />
+            </template>
+        </category>
+    </aiml>
+
+| sraix要素の属性 ``botName`` を指定することで、BOTのエイリアス定義を利用して対BOT専用の通信処理が行えます。
+| 詳細については、:ref:`対話プラットフォームで、公開されているbot呼び出し<subagent_cotoba_design_pf>` を参照してください。
+
+エイリアス定義を利用して同じ処理を行う場合、まず、エイリアスの登録ファイル（botnames.yaml）に以下の内容を記述します。
+
+.. code:: yaml
+
+  bot:
+    ALIAS_NAME:
+      url: https://HOSTNAME/bots/BOT_ID/ask
+
+シナリオの記述は以下の様に簡略化されます。
+
+.. code:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+
+    <aiml version="2.0">
+        <category>
+            <pattern>サブエージェント*</pattern>
+            <template>
+                <sraix botName="ALIAS_NAME">
+                    <star />
+                </sraix>
             </template>
         </category>
     </aiml>
@@ -175,7 +200,7 @@ NLU要素を利用し意図解釈エンジンのインテントによるpattern�
     <aiml version="2.0">
         <category>
             <pattern>
-                <nlu intent="レストラン検索"/>
+                <nlu intent="レストラン検索" />
             </pattern>
             <template>
                 <think>
@@ -191,9 +216,12 @@ NLU要素を利用し意図解釈エンジンのインテントによるpattern�
                         <think>
                             <set var="count"><map name="upcount"><get var="count" /></map></set>
                         </think>
-                        <loop/>
+                        <loop />
                     </li>
                 </condition>
             </template>
         </category>
     </aiml>
+
+| 尚、sraix要素の属性 ``nlu`` を指定することで、特定のNLUサーバと直接通信を行って、意図解釈エンジンの処理結果を取得することもできます。
+| 詳細については、SubAgentの :ref:`NLU通信インタフェース<subagent_nlu>` を参照してください。

@@ -14,6 +14,7 @@ metadata
 | metadata要素がJSON形式の場合、 :ref:`json<template_json>` タグを用いることで、__USER_METADATA__内の要素を取得することができます。
 | __USER_METADATA__の内容は、対話APIのレスポンスを返却するまでの間有効です。継続して__USER_METADATA__の内容を利用する場合、別途変数に代入してください。
 
+メタデータ変数__USER_METADATA__はローカル変数（var）として扱いますが、ユーザ毎の管理情報であるため、特別に、レスポンスを返却するまでの間は、srai処理でも引き継いで利用することができます。
 
 metadataの変数への展開方法
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -72,7 +73,7 @@ metadataの変数への展開方法
             <template>
                 <think>
                     <sraix service="myService">
-                        <star />
+                        <star /><space />
                         <get var="__USER_METADATA__" />
                     </sraix>
                     <set name="departure"><json var="__SUBAGENT__.myService.transportation.station.departure" /></set>
@@ -92,6 +93,7 @@ metadataの変数への展開方法
     "第1引数","こんにちは"
     "第2引数","メタデータテスト"
 
+※ 引数を空白で分離する為に、space要素を使用しています。
 
 JSONデータとしての取り扱い方
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -120,9 +122,9 @@ JSONデータとしての取り扱い方
             <template>
                 <think>
                     <sraix service="myService">
-                        <star />
-                        <json var="__USER_METADATA__.arg1" />
-                        <json var="__USER_METADATA__.arg2" />
+                        <star /><space />
+                        <json var="__USER_METADATA__.arg1" /><space />
+                        <json var="__USER_METADATA__.arg2" /><space />
                         <json var="__USER_METADATA__.arg3" />
                     </sraix>
                     <set name="departure"><json var="__SUBAGENT__.myService.transportation.station.departure" /></set>
@@ -145,6 +147,7 @@ JSONデータとしての取り扱い方
     "第3引数","value2"
     "第4引数","value3"
 
+※ 引数を空白で分離する為に、space要素を使用しています。
 
 サブエージェントにmetadata全てを引き渡す方法
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -161,7 +164,7 @@ JSONデータとしての取り扱い方
             <template>
                 <think>
                     <sraix service="myService">
-                        <star />
+                        <star /><space />
                         <json var="__USER_METADATA__" /> 
                     </sraix>
                     <set name=departure><json var="__SUBAGENT__.myService.transportation.station.departure" /></set>
@@ -182,7 +185,7 @@ JSONデータとしての取り扱い方
     "第1引数","こんにちは"
     "第2引数","{'arg1': 'value1', 'arg2': 'value2', 'arg3': 'value3'}"
 
-
+※ 引数を空白で分離する為に、space要素を使用しています。
 
 対話APIに返すmetadataの設定
 ----------------------------------------
@@ -190,6 +193,7 @@ JSONデータとしての取り扱い方
 | 対話APIのレスポンスに設定するmetadata要素の指定は、シナリオの返却用メタデータ変数__SYSTEM_METADATA__にデータを設定することで行います。
 | レスポンスのmetadata要素には、テキストデータ、または、JSONデータを設定することができ、各々のシナリオでの取り扱い方を説明します。
 
+メタデータ変数__SYSTEM_METADATA__はローカル変数（var）として扱いますが、ユーザ毎の管理情報であるため、特別に、レスポンスを返却するまでの間は、srai処理でも引き継いで利用することができます。
 
 テキストデータとしての取り扱い方
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

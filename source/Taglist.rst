@@ -60,6 +60,8 @@ category
 | aiml要素の内容に、複数のcategory要素のブロックを含んだ形で記述することができます。
 | `aiml <#aiml>`__ 要素と `topic <#topic>`__ 要素を除く、すべてのcAIMLの要素は、category要素のブロック内に含まれている必要があります。
 
+尚、登録可能なcategory数は、コンフィグレーション定義の :ref:`制限値定義<config_bot_max>` の ``max_categories`` までとなります。
+
 * 属性
 
 なし

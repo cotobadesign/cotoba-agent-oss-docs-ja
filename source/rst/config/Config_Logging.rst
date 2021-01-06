@@ -3,11 +3,10 @@
 
 .. _config_logging:
 
-
-Pythonのロギング機能を用いロギングを行います。 
+対話エンジンのログ出力は、Pythonのロギング機能を用いて行います。 
 ログ設定オプションを指定する方法の詳細については、 `Pythonロギングドキュメント <https://docs.python.jp/3/library/logging.config.html#user-defined-objects>`__ を参照してください。
 
-/tmp/y-bot.logに出力するログ設定例です。
+以下は、ログコンフィグの指定として、/tmp/y-bot.logにログ出力する設定例です。
 
 .. code:: yaml
 

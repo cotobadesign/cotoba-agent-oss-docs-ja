@@ -1,45 +1,44 @@
 OOB
 ============================
 
-``OOB(Out of Band)`` は、動的にロードされるクラスとAIML要素の組み合わせで実現します。
-使用するOOBノード毎に、Pythonクラスを実装し、configで関連付けを行う必要があります。
-OOBの実装基底クラスは次のように定義されています。
-
+``OOB(Out of Band)`` は、動的にロードされるクラスとAIMLのoob要素で指定するOOB機能の名称の組み合わせで実現します。
+使用するOOB機能毎に、Pythonクラスを実装し、コンフィグレーションの :doc:`OOB設定<config/Config_Brain_OOB>` で、以下の様に機能名と関連付けを行う必要があります。
 
 .. csv-table::
     :header: "パラメータ名","説明"
     :widths: 20,20,70
 
-    "default","",""
-    "","classname","デフォルトOOBのpythonのパスを定義します。"
-    "OOBの名称","","この項目に設定した名称が、AIMLで指定するOOB名になります。例では'email'がOOBのタグになります。"
-    "","classname","実装を行うOOBのpythonのパスを定義します。OOB内を実装する子要素は実装クラスで定義しており、configで指定する必要はありません。"
+    "OOBの名称","","この項目に設定した名称が、AIMLで指定するOOB名になります。例では'email'がOOB名になります。"
+    "","classname","実装を行うOOBのpythonのクラスパスを定義します。OOB内を実装する子要素は実装クラスで定義しており、configで指定する必要はありません。"
 
+OOBの実装基底クラスは次のように定義されています。
 
 .. code:: python
+
+   # programy/oob/defaults/oob.py
 
    import xml.etree.ElementTree as ET
 
    class OutOfBandProcessor(object):
 
        def __init__(self):
-           return
+           self._xml = None
 
        # Override this method to extract the data for your command
        # See actual implementations for details of how to do this
        def parse_oob_xml(self, oob: ET.Element):
-           return
+           self._xml = oob
+           return True
 
        # Override this method in your own class to do something
        # useful with the command data
-       def execute_oob_command(self, bot, clientid):
-           return ""
+       def execute_oob_command(self, client_context):
+           raise NotImplementedError()
 
-       def process_out_of_bounds(self, bot, clientid, oob):
+       def process_out_of_bounds(self, client_context, oob: ET.Element):
            if self.parse_oob_xml(oob) is True:
-               return self.execute_oob_command(bot, clientid)
-           else:
-               return ""
+               return self.execute_oob_command(client_context)
+           return ""
 
 電子メールを送信するOOB機能がある場合、OOBを利用するAIMLは次のように記載します。
 
@@ -53,10 +52,25 @@ OOBの実装基底クラスは次のように定義されています。
        </email>
    </oob>
 
+この場合、OOBの処理クラスに渡される引数は以下のXMLになります。
+
+.. code:: xml
+
+   <oob>
+       <to>宛先</to>
+       <subject>件名</subject>
+       <body>本文</body>
+   </oob>
+
+
 実装クラスは次のようになります。
-parse_oob_xml()メソッドで子要素を取得、保持し、send_oob_command()メソッドで実際にメールを送信する処理を実装します。
+parse_oob_xml()メソッドでAIMLのoob要素で指定された内容（XML形式）から引数値を取得し、execute_oob_command()メソッドで実際にメールを送信する処理を実装します。
 
 .. code:: python
+
+   # programy/oob/email/email.py
+
+   from programy.oob.defaults.oob import OutOfBandProcessor
 
    class EmailOutOfBandProcessor(OutOfBandProcessor):
 
@@ -85,21 +99,19 @@ parse_oob_xml()メソッドで子要素を取得、保持し、send_oob_command(
                logging.error("Invalid email oob command")
                return False
 
-       def execute_oob_command(self, bot, clientid):
+       def execute_oob_command(self, client_context):
            logging.info("EmailOutOfBandProcessor: Emailing=%s", self._to)
            return ""
 
 
 
-OOBの設定は、config.yamlに以下の設定を行います。
+OOB機能を利用するための定義として、コンフィグレーションで以下の設定を行います。
 
 .. code:: yaml
 
     oob:
-        default:
-            classname: programy.oob.default.DefaultOutOfBandProcessor
         email:
-            classname: programy.oob.email.EmailOutOfBandProcessor
+            classname: programy.oob.email.email.EmailOutOfBandProcessor
 
 
 OOBの詳細設定方法は、 :doc:`OOBの設定<config/Config_Brain_OOB>` を参照してください。

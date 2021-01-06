@@ -4,8 +4,8 @@
 ライセンスキーの置換
 -------------------------
 
-- license.keysの設定値を置換する機能
- ``LICENSE_KEY:VALUE``  をコンフィグの構成アイテムに指定した場合、license.keysの値が置換される機能です。
+| license.keysの設定値を置換する機能です。
+| ``LICENSE_KEY:VALUE`` をコンフィグの構成アイテムに指定した場合に、license.keysの値が置換します。
  
 
 設定例

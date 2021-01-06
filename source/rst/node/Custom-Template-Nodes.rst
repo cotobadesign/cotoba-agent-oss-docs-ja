@@ -1,10 +1,17 @@
 カスタムtemplate要素
 ============================
 
-| パーサーは、template_nodes.confを含むシステムで定義された全てのAIMLタグをサポートします。
-| template_nodes.confは、要素の実装を変更したり、独自の要素を追加することもできます。
+| 対話エンジンは template要素として、template_nodes.confを含むシステムで定義された全てのAIMLタグをサポートします。
+| template_nodes.conf を変更することで、要素に対応する処理クラスを変更したり、独自の要素を追加することができます。
 | ``要素の実装を変更すると、パーサが動作しなくなったりパフォーマンスや他の要素の動作に重大な影響を与える可能性があるため全体の動作を理解した上でご利用ください。``
 
+要素毎に以下の記述を列記します。
+
+.. code:: ini
+
+   AIMLタグ名 = python処理クラスのパス
+
+＊記述例
 
 .. code:: ini
 
@@ -60,13 +67,27 @@
    uniq = programy.parser.template.nodes.uniq.TemplateUniqNode
    search = programy.parser.template.nodes.search.TemplateSearchNode
 
-| 各template要素は、``programy.parser.template.nodes.base.TemplateNode`` を基底クラスとして継承します。
-| programy.parser.template.nodes.base.TemplateNode はtemplate要素の基底クラスであり、XML要素をtemplateクラスのノード属性にカプセル化します。また、template評価中に子要素も含めたテキスト化の評価にも用います。
+| 新たなtemplate要素を作成する場合、``programy.parser.template.nodes.base.TemplateNode`` を基底クラスとして継承します。
+| 本基底クラスを継承することで、AIMLのXML要素をtemplateクラスのノード属性にカプセル化します。また、template展開中に子要素も含めた結果のテキスト化も行います。
 
-オーバーライドする主要なメソッドには、以下があります。
+オーバーライドする主要なメソッドには、以下のものがあります。
 
--  ``def parse_expression(self, graph, expression)`` - xmlの要素に解析します。展開できない場合は必要に応じて適切な例外をスローします。
--  ``def resolve_to_string(self, bot, clientid)`` - 要素を文字列(応答文)に展開します。resolve()によって呼び出されます。
--  ``def resolve(self, bot, clientid)`` - 個々のtemplate要素を文字列に展開するためにbrainによって呼び出されます。文字列を作成するために子要素を辿り順次処理し文字列を結合します。
--  ``def to_string(self)`` - デバッグやロギングの為に要素情報を文字列表現に変換するメソッドです。
--  ``def to_xml(self, bot, clientid)`` - 要素の内容をXML形式に変換します。これは、:ref:`learnf<template_learnf>` の一部としてaimlファイルを作成する際に利用したり、XML形式の `Braintree` へ出力時に利用するメソッドです。
+-  ``def parse_expression(self, graph, expression)``
+
+   xmlの要素を解析して展開します。AIMLパーサの環境が graph で、該当タグのxml要素が expression で引き渡されます。展開できない場合は必要に応じて適切な例外をスローします。
+
+-  ``def resolve_to_string(self, client_context)``
+
+   要素の内容を文字列(応答文)に展開します。後述の resolve() によって呼び出されます。
+
+-  ``def resolve(self, client_context)``
+
+   個々のtemplate要素を文字列に展開するために、brainによって呼び出されます。文字列を作成するために子要素を辿り、下位から順に resolve() を実行して結果文字列を生成（結合）します。
+
+-  ``def to_string(self)``
+
+   デバッグやロギングの出力の為に、要素情報を文字列表現に変換します。
+
+-  ``def to_xml(self, client_context)``
+
+   要素の内容をXML形式に変換します。これは、:ref:`learnf/learnf<template_learnf>` の結果としてaimlファイルを作成する際に利用したり、XML形式の `Braintree` を出力する場合に利用します。
