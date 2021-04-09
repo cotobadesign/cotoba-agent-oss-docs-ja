@@ -247,7 +247,7 @@ rest_templatesファイルで以下の定義を行った場合のテンプレー
         <pattern>XXX</pattern>
         <template>
             <sraix template="テンプレート">
-                <query></quesy>
+                <query></query>
             <sraix>
         </template>
     </category>
