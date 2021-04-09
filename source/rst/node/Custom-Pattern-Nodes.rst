@@ -33,7 +33,7 @@
    iset = programy.parser.pattern.nodes.iset.PatternISetNode
    regex = programy.parser.pattern.nodes.regex.PatternRegexNode 
 
-| 新たなtemplate要素を作成する場合、``programy.parser.pattern.nodes.base.PatternNode`` を基底クラスとして継承します。
+| 新たなpattern要素を作成する場合、``programy.parser.pattern.nodes.base.PatternNode`` を基底クラスとして継承します。
 | 本基底クラスを継承することで、AIMLのXML要素をpatternクラスのノード属性にカプセル化します。また、patternの評価中に対象文字列を要素の型に変換させる処理も行います。
 
 以下が、オーバーライドする主なメソッドになります。
