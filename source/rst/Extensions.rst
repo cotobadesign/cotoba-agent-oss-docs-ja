@@ -95,7 +95,7 @@ name変数は、対話情報内の ``properties`` に辞書データとして格
 .. code::
 
     name_list = conversation.properties                   # 変数（辞書）リストの取得
-    get_value = conversation.proprty('変数名')             # 任意変数値の取得
+    get_value = conversation.property('変数名')            # 任意変数値の取得
     set_value = conversation.set_property('変数名', '値')  # 任意変数の追加・変更
     remove = conversation.set_property('変数名', ’’)       # 任意変数の削除（値に空文字を指定）
 
@@ -108,7 +108,7 @@ data変数は、対話情報内の ``data_properties`` に辞書データとし�
 .. code::
 
     data_list = conversation.data_properties                   # 変数（辞書）リストの取得
-    get_value = conversation.data_proprty('変数名')             # 任意変数値の取得
+    get_value = conversation.data_property('変数名')            # 任意変数値の取得
     set_value = conversation.set_data_property('変数名', '値')  # 任意変数の追加・変更
     remove = conversation.set_data_property('変数名', ’’)       # 任意変数の削除（値に空文字を指定）
 
@@ -124,7 +124,7 @@ var変数は category単位の処理内でのみ有効な変数のため、対�
     question = conversation.current_question()
 
     var_list = question._properties                   # 変数（辞書）リストの取得
-    get_value = question.proprty('変数名')             # 任意変数値の取得
+    get_value = question.property('変数名')            # 任意変数値の取得
     set_value = question.set_property('変数名', '値')  # 任意変数の追加・変更
     remove = question.set_property('変数名', ’’)       # 任意変数の削除（値に空文字を指定）
 
